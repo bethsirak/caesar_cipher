@@ -20,23 +20,21 @@ def encrypt(text,shift):
   print(f"The encoded text is {text_encoded}")
 encrypt(text,shift)
 
-#TODO-2: Inside the 'encrypt' function, shift each letter of the 'text' forwards in the alphabet by the shift amount and print the encrypted text.  
+def decrypt(text,shift):
+  text_list = list(text.strip(""))
+  text_encoded = ""
+  for char in text_list:
+      current_index = alphabet.index(char)
+      new_index = current_index - shift
+      if new_index < 0:
+                new_index = 26 - new_index
+      new_char = alphabet[new_index]
+      text_encoded += new_char
+  print(f"The decrypted text is {text_encoded}")
 
-#TODO-3: Call the encrypt function and pass in the user inputs. You should be able to test the code and encrypt a message. 
-      
-  
-  # for each letter in text
-  # find that letter in alphabet list
-  #   new_text = letter[current index + shift]
-
-  # join letters to form the encrypted_word
-    #print(new_text)
-  
-
-  
-#OUTPUT
-  #plain_text = "hello"
-  #shift = 5
-  #cipher_text = "mjqqt"
-  #print output: "The encoded text is mjqqt"
-
+if direction.lower() == "encode":
+  encrypt(text,shift)
+elif direction.lower() == "decode":
+  decrypt(text,shift)
+else:
+  print("You have entered an invalid option")
